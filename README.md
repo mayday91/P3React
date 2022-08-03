@@ -92,7 +92,7 @@ Login and save songs to your cart then checkout.
 
 ## ERD
 
-![ERD](./public/assets/images/ERD/IMG_3141.jpg)
+![ERD](public/assets/images/ERD/ERD.png)
 
 ## Roles
 Randy D'Abbraccio & Gonzalo Quiroqa - frontend client
