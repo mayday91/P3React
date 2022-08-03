@@ -39,10 +39,11 @@ Login and save songs to your cart then checkout.
 ## Wireframes
 
 ![Home](./public/assets/images/Index%20Page.png)
-![Search](./public/assets/images/Search%20results.png)
+![Search](./public/assets/images/Search%20Page%20Logged%20In.png)
 ![Login](./public/assets/images/Login.png)
-![Show](./public/assets/images/Show.png)
+![Show](./public/assets/images/Show%20Page.png)
 ![Cart](./public/assets/images/Cart.png)
+![Logout](./public/assets/images/logout.png)
 
 
 
