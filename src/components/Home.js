@@ -11,10 +11,9 @@ const Home = (props) => {
 	return (
 		
 		<Fragment>
-			<h1>HOMEPAGE YO</h1> 
-			<Routes>
-				<Route path='/songs' element ={<SongSearch />}></Route>
-			</Routes>
+			
+			<SongSearch />
+
 		</Fragment>
 
 
