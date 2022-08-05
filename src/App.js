@@ -12,6 +12,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import SongSearch from './components/shared/SongSearch'
 
 const App = () => {
 
@@ -44,6 +45,7 @@ const App = () => {
 			<Fragment>
 				<Header user={user} />
 				<Routes>
+					<Route path='/songs' element={<SongSearch />} />
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 					<Route
 						path='/sign-up'
@@ -68,6 +70,7 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
+
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
