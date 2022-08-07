@@ -13,8 +13,10 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import SongSearch from './components/shared/SongSearch'
+import MyCart from './components/carts/MyCart.js'
 
 const App = () => {
+	console.log('In App @ App.js');
 
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
@@ -27,6 +29,7 @@ const App = () => {
   }
 
 	const deleteAlert = (id) => {
+		console.log('In deleteAlert @ App.js');
 		setMsgAlerts((prevState) => {
 			return (prevState.filter((msg) => msg.id !== id) )
 		})
@@ -51,6 +54,8 @@ const App = () => {
 						path='/sign-up'
 						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
 					/>
+
+					{/* !!! SIGNING-IN NEEDS TO CREATE A CART FOR A USER UPON SIGN-IN !!! */}
 					<Route
 						path='/sign-in'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
@@ -62,14 +67,22 @@ const App = () => {
                 <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
               </RequireAuth>
             }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
+            />
+            <Route
+            	path='/change-password'
+            	element={
+              	<RequireAuth user={user}>
                 <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
+              	</RequireAuth>}
+            />
+
+			<Route
+				path = '/my-cart'
+				element={
+				<RequireAuth user={user}>
+                <MyCart msgAlert={msgAlert} user={user} />
+				</RequireAuth>}
+			/>
 
 				</Routes>
 				{msgAlerts.map((msgAlert) => (

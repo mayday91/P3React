@@ -1,14 +1,20 @@
 // import React, { Component } from 'react'
+
+// NEEDS to create a Cart on sign-up still
+
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { signUp, signIn } from '../../api/auth'
+import {signUpMakeCart} from '../../api/cart'
+
 import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignUp = (props) => {
+    console.log('IN SignUP @ SignUp.js');
 	// constructor(props) {
 	// 	super(props)
 
@@ -25,6 +31,7 @@ const SignUp = (props) => {
     const navigate = useNavigate()
 
 	const onSignUp = (event) => {
+        console.log('IN onSignUp @ SignUp.js');
 		event.preventDefault()
 
 		const { msgAlert, setUser } = props
@@ -41,8 +48,9 @@ const SignUp = (props) => {
 					variant: 'success',
 				})
 			)
-			.then(() => navigate('/'))
-			.catch((error) => {
+            .then(() => navigate('/'))
+			// .then((res) => signUpMakeCart(res.data.user))
+            .catch((error) => {
                 setEmail('')
                 setPassword('')
                 setPasswordConfirmation('')

@@ -18,6 +18,10 @@ const authenticatedOptions = (
 				Sign Out
 			</Link>
 		</Nav.Item>
+
+		<Nav.Item>
+		    <Link to='my-cart' style={linkStyle}>My Cart</Link>
+        </Nav.Item>
 	</>
 )
 
@@ -29,6 +33,8 @@ const unauthenticatedOptions = (
         <Nav.Item>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
+		
+
 	</>
 )
 

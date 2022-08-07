@@ -1,11 +1,20 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+
 import { signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+
+
+// *********************************************
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// HAVE to hit the create route POST /carts when the user logs
+// in to make a new cart for them
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const SignIn = (props) => {
 	// constructor(props) {
@@ -42,6 +51,7 @@ const SignIn = (props) => {
 					variant: 'success',
 				})
 			)
+
 			.then(() => navigate('/'))
 			.catch((error) => {
                 setEmail('')
