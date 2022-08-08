@@ -3,17 +3,18 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 import { removeSongFromCartApi } from '../../api/cart.js'
 import { getMyCart } from '../../api/cart.js'
-
+// import StripeCheckout from 'react-stripe-checkout'
 import Form from 'react-bootstrap/Form';
+import { v4 as uuidv4} from 'uuid'
 
 
 // shows MyCart from mongo db model in backend.
 const MyCart = (props) => {
 
-    const [cartSongsList, setCartSongsList]=useState([])
+    // const [cartSongsList, setCartSongsList]=useState([])
     const { msgAlert, user } = props
-    const [cartItemsToShow, setCartItemsToShow] = useState([])
-    const [songListFromMongo, setSongListFromMongo]= useState({})
+    // const [cartItemsToShow, setCartItemsToShow] = useState([])
+    const [songListFromMongo, setSongListFromMongo]= useState(null)
 
     const removeFromCartHandler = (e,mbid,user) => {
             e.preventDefault()
@@ -21,92 +22,121 @@ const MyCart = (props) => {
             removeSongFromCartApi(mbid.mbid,user)
     }
     
-    let showCards = null
-    let testCard = null
+    // let showCards = null
+    // let testCard = null
 
-    // useEffect(() => { 
-    //     getMyCart(user)
-    //     .then((res) => {
-    //         // cartItemsToDisplay = res.data.cart[0].songs
-    //         // let oneThing = res.data.cart[0].songs[9].songName // working+
-    //         console.log('^^^^^^^^^^^^IN .THEN RES^^^^^^^^^^^^^');
-    //         // setSongListFromMongo(res.data.cart[0])
+    // GOES INSIDE RENDER
+//     <StripeCheckout
+//     stripeKey = "pk_test_51LUZ1VBiP5RJVuISbJ5woJ2ONE6CzCuzmX2lhy72gawpunhS9CXEsUop9WvyJ92IEsxv52y2NKfmS9rcl1ogpEZ900A0HIoyMl"
+//     token = {handleToken}
+//     amount = {1 * 100}
+//     label = "ButtonLabel"
+//     shippingAddress
+//     // can add image
+//     // use 42424242 four twos for CC number always
 
-    //         setSongListFromMongo(songListFromMongo => ({...songListFromMongo, res }))
 
+// />
+
+
+
+
+
+    useEffect(() => { 
+        getMyCart(user)
+            .then((res) => {
+                // cartItemsToDisplay = res.data.cart[0].songs
+                // let oneThing = res.data.cart[0].songs[9].songName // working+
+                console.log('^^^^^^^^^^^^IN .THEN RES^^^^^^^^^^^^^');
+                console.log('res51',res);
+                setSongListFromMongo(res.data) //.cart[0].songs[9].songName
+
+                // setSongListFromMongo(songListFromMongo => ({...songListFromMongo, res }))
+
+                
+                // console.log('RES++++++++++++++',res.data.cart[0].songs);})
+            // .catch((error) => {console.log(error) })
             
-    //         // console.log('RES++++++++++++++',res.data.cart[0].songs);})
-    //     // .catch((error) => {console.log(error) })
-    //     }, [])
-    // })
+            }).catch((err) => {console.log(err);})
+    },[])
+        
+// getMyCart(user)
+
+// .then((res) => {
+    
+//     console.log('res$~$~$from MongoGet',res.data.cart[0].songs)
+//     setSongListFromMongo(res.data.cart[0].songs)
+//                         /// could be (res.data.cart[0].songs)
+
+// }).catch((error)=> {console.log(error);})
+
+
+function handleToken(token,addresses){console.log(token,addresses)}  //
+    
+
+console.log('!!!!songListFromMongo!!!!',songListFromMongo)
+
+
+    // const conversion = () => {
+    //     // let converted = JSON.parse(oneThing)
+    //     console.log('IN CONVERSION');
+    //     setSongListFromMongo("teststate")
+
+    //     console.log('songListFromMongo ::***********',songListFromMongo);
+            
+    //     return 
+
+    // }
+
+    // conversion()
+
+        // const finalCartItems = songListFromMongo.map((cartElement) => {  
+        //     return (  
+                
+         
+            
+         
+        //     )
+        // })      
+
+    if(!songListFromMongo){
+        return(<div>Please Wait</div>)
+    } else {
 
     
 
-
-
-
-    const conversion = () => {
-        // let converted = JSON.parse(oneThing)
-        console.log('IN CONVERSION');
-        setSongListFromMongo("teststate")
-
-        console.log('songListFromMongo ::***********',songListFromMongo);
+        return(  
             
-        return 
+         
+            <>        
+                {
+                    songListFromMongo.cart[0].songs.map((cartElement) => {  
+                        return (  
+                            
+                        <Card style={{ width: '30%', margin: 5}} key={uuidv4()}>
+                            <Card.Header>{ cartElement.songName }</Card.Header>
+                            <Card.Body>
+                                
+                                    <div>{ cartElement.songImages }</div>
+                                    <Form onSubmit={(e) => {removeFromCartHandler(e,cartElement,user)}} className="d-flex">
+                                        <Button variant="primary" type = "submit" >
+                                            Remove From Cart        
+                                        </Button>
+                                    </Form>
+                                
+                            </Card.Body>
+                        </Card> 
+                    
+                        )
+                    })   
+            
+                }   
+                    
 
+            </>
+
+        )
     }
-
-    conversion()
-
-        const finalCartItems = songListFromMongo.map(cartElement => (
-            <Card style={{ width: '30%', margin: 5}} key={cartElement}>
-                <Card.Header><strong>{ cartElement }</strong></Card.Header>
-                    <Card.Body>
-                        <Card.Text>
-                            <div>{ cartElement}</div> 
-                            {/* <img src={ cartElement.image[3]['#text'] } /> */}
-                            {/* <img src={ cartElement.image[3]['#text'] } /> */}
-                            <div>{ cartElement.mbid }</div>
-                            <Form onSubmit={(e) => {removeFromCartHandler(e,cartElement,user)}} className="d-flex">
-                                <Button variant="primary" type = "submit" >
-                                    Remove From Cart        
-                                </Button>
-                            </Form>
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-        ))      
-  
-
-    return(    
-  
-        <>
-        <Card style={{ width: '30%', margin: 5}} key={showCards}>        
-         {/* should be like :<Card.Header><strong>{ song.name }</strong></Card.Header> */}
-           <h2> IN MY CART</h2>
-            <Card.Header><strong>{ }</strong></Card.Header>
-                <Card.Body>
-                    <Card.Text>
-                        <div> {}</div> 
-                        <img src={showCards} />
-                        <div>{  }</div>
-                        <Form onSubmit={(e) => {removeFromCartHandler(e,user)}} className="d-flex">
-                            <Button variant="primary" type = "submit" >
-                                Remove from Cart Not working       
-                            </Button>
-                        </Form>
-                    </Card.Text>
-                </Card.Body>
-
-                {finalCartItems}
-         </Card>
-
-
-
-        </>
-
-    )
-
 }
 
 export default MyCart

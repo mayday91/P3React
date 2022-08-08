@@ -1,11 +1,11 @@
 import React, { useState, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+// import Offcanvas from 'react-bootstrap/Offcanvas';
 import { songSearch } from '../../api/song.js'
 import { addSongToCart } from '../../api/cart.js'
 import { useNavigate } from 'react-router-dom'
@@ -53,11 +53,11 @@ const SongSearch = (props) => {
 
     console.log("###SONGSEARCH###",returnedSongList)
 
-    const cleanSongList = returnedSongList.forEach(song => {
-        console.log('SONG~~~~~',song.image[2])
+    // const cleanSongList = returnedSongList.forEach(song => {
+    //     console.log('SONG~~~~~',song.image[2])
 
-    })
-    console.log('cleanSongList',cleanSongList)
+    // })
+    // console.log('cleanSongList',cleanSongList)
 
     const songsToDisplay = returnedSongList.map(aSong => (
         <Card style={{ width: '30%', margin: 5}} key={aSong.url}>
