@@ -49,7 +49,6 @@ const SignUp = (props) => {
 				})
 			)
             .then(() => navigate('/'))
-			// .then((res) => signUpMakeCart(res.data.user))
             .catch((error) => {
                 setEmail('')
                 setPassword('')

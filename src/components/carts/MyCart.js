@@ -1,7 +1,11 @@
-import { useState, useEffect, Fragment } from 'react'
+import { useState , useEffect, Fragment } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 import { removeSongFromCartApi } from '../../api/cart.js'
+import { getMyCart } from '../../api/cart.js'
+// import { useEffect } from "react/cjs/react.development";
+
+
 
 
 import Form from 'react-bootstrap/Form';
@@ -10,27 +14,43 @@ import Form from 'react-bootstrap/Form';
 // shows MyCart from mongo db model in backend.
 const MyCart = (props) => {
 
-    let song = "TEMPORARY HOLDER. NOT ACTUAL. SHOULD BE LIKE props.songid"
-
+    const [cartSongsList, setCartSongsList]=useState([])
     const { msgAlert, user } = props
+
+    let song =  "TEMPORARY HOLDER. NOT ACTUAL. SHOULD BE LIKE props.songid"
 
 
     const removeFromCartHandler = (e,mbid,user) => {
             e.preventDefault()
             console.log('removeFromCartHandler====>>>',mbid.mbid);
             removeSongFromCartApi(mbid.mbid,user)
-         }
+    }
     
 
-    return(
+
+    useEffect(() => { 
+        getMyCart(user)
+        .then((res) => {console.log('RES',res);})
+        .catch((error) => {console.log(error) })
+    }, [])
+
+ 
+        
+   
+  
+
+    return(    
         <>
         <Card style={{ width: '30%', margin: 5}} key={song.url}>
-            <Card.Header><strong>{ song.name }</strong></Card.Header>
+        
+         {/* should be like :<Card.Header><strong>{ song.name }</strong></Card.Header> */}
+           <h2> IN MY CART</h2>
+            <Card.Header><strong>{ song }</strong></Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        <div>{ song.artist }</div> 
-                        <img src={ song.image[2]} />
-                        <div>{ song.mbid }</div>
+                        <div>{ song }</div> 
+                        <img src={ song[2]} />
+                        <div>{ song }</div>
                         <Form onSubmit={(e) => {removeFromCartHandler(e,song,user)}} className="d-flex">
                             <Button variant="primary" type = "submit" >
                                 Remove from Cart        

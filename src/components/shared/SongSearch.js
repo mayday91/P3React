@@ -32,30 +32,40 @@ const SongSearch = (props) => {
 
     const doSongSearch = (e) => {
         e.preventDefault()
-        songSearch(searchTerm).then((res) => {setReturnedSongList(res.data.fmData.results.trackmatches.track)}).catch((error) => {
+        songSearch(searchTerm).then((res) => {setReturnedSongList(res.data.fmData.results.albummatches.album)}).catch((error) => {
         })  
     }
 
     // gets one song by ADD button and sends it to backend to add to cart
-     const addToCartHandler = (e,mbid,user) => {
+     const addToCartHandler = (e,wholeSong,user) => {
         e.preventDefault()
-        console.log('addToCartHandler====>>>',mbid.mbid);
-        addSongToCart(mbid.mbid,user)
+        // console.log('addToCartHandler====>>>',mbid.mbid);
+        addSongToCart(wholeSong,user)
      }
 
     // console.log('returnedSongList;@@@@@@@@',returnedSongList)
     // const imageString = "aSong.image[2]." + String.fromCharCode(35) + "text"
+    // const songImage = `${aSong.image[2].text}`
 
     // grabs user Search input and sends it to backend
     // then hits LASTFM api and returns the list
     // then it generates a CARD for each
+
+    console.log("###SONGSEARCH###",returnedSongList)
+
+    const cleanSongList = returnedSongList.forEach(song => {
+        console.log('SONG~~~~~',song.image[2])
+
+    })
+    console.log('cleanSongList',cleanSongList)
+
     const songsToDisplay = returnedSongList.map(aSong => (
         <Card style={{ width: '30%', margin: 5}} key={aSong.url}>
             <Card.Header><strong>{ aSong.name }</strong></Card.Header>
                 <Card.Body>
                     <Card.Text>
                         <div>{ aSong.artist }</div> 
-                        <img src={ aSong.image[2]} />
+                        <img src={ aSong.image[3]['#text'] } />
                         <div>{ aSong.mbid }</div>
                         <Form onSubmit={(e) => {addToCartHandler(e,aSong,user)}} className="d-flex">
                             <Button variant="primary" type = "submit" >

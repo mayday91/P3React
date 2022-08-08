@@ -4,6 +4,8 @@ import axios from 'axios'
 
 // used for making a car upon sign=up
 // passes in user info as POST
+
+// PROBABLY DONT'T NEED
 export const signUpMakeCart = (user) => {
 
 	console.log('IN signUpMakeCart @ cart.js');
@@ -48,18 +50,19 @@ export const addSongToCart = (songIdToAdd,user) => {
 // send User info to frontend and grab the Cart with matching owner
 // should be auth based
 export const getMyCart = (user) => {
+	let userToPass = user._id
 	console.log('IN getMyCart @ cart.js');
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-    console.log("user::",user);
-	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+    console.log("'IN getMyCart @ cart.js USER:",userToPass)
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
 	
 	return axios({
 		method: 'GET',
-		url: apiUrl + '/carts'+ `/${user}`,
-		headers: {
-			Authorization: `Token token=${user.token}`,
+		url: apiUrl + '/carts'+ `/${userToPass}`,
+		// headers: {
+		// 	Authorization: `Token token=${user.token}`,
 			
-		}
+		// }
 		
 	})
 }
