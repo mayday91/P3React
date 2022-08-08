@@ -18,6 +18,10 @@ const authenticatedOptions = (
 				Sign Out
 			</Link>
 		</Nav.Item>
+
+		<Nav.Item>
+		    <Link to='my-cart' style={linkStyle}>My Cart</Link>
+        </Nav.Item>
 	</>
 )
 
@@ -28,7 +32,9 @@ const unauthenticatedOptions = (
         </Nav.Link>
         <Nav.Link>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
+
         </Nav.Link>
+
 	</>
 )
 
@@ -46,7 +52,7 @@ const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
-                DropouTTunes
+            DropouTTunes
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
