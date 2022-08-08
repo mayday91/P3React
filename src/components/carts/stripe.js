@@ -1,27 +1,24 @@
 import StripeCheckout from 'react-stripe-checkout';
 
-
+// total is length of array = number of songs in cart
 const Stripe = ({total}) => {
 
-    console.log('IN STRIPE ',total);
+    // console.log('IN STRIPE ',total);
 
 
     return(
         <>
+            <div> 
+                    <StripeCheckout
+                        stripeKey = "pk_test_51LUZ1VBiP5RJVuISbJ5woJ2ONE6CzCuzmX2lhy72gawpunhS9CXEsUop9WvyJ92IEsxv52y2NKfmS9rcl1ogpEZ900A0HIoyMl"
+                        // token = {total}
+                        // 1.0625 is sales tax in MA
+                        amount = {total * 100 * 1.0625}
 
-        <div>
- 
-                <StripeCheckout
-                    stripeKey = "pk_test_51LUZ1VBiP5RJVuISbJ5woJ2ONE6CzCuzmX2lhy72gawpunhS9CXEsUop9WvyJ92IEsxv52y2NKfmS9rcl1ogpEZ900A0HIoyMl"
-                    // token = {total}
-                    amount = {total * 100}
-
-                    label = "Purchase"
-                    shippingAddress
-                />
-        </div>
-
-
+                        label = "Purchase"
+                        shippingAddress
+                    />
+            </div>
         </>
     )
 }
