@@ -6,6 +6,7 @@ import { getMyCart } from '../../api/cart.js'
 // import StripeCheckout from 'react-stripe-checkout'
 import Form from 'react-bootstrap/Form';
 import { v4 as uuidv4} from 'uuid'
+import { render } from 'sass'
 
 
 // shows MyCart from mongo db model in backend.
@@ -77,55 +78,23 @@ function handleToken(token,addresses){console.log(token,addresses)}  //
 console.log('!!!!songListFromMongo!!!!',songListFromMongo)
 
 
-    // const conversion = () => {
-    //     // let converted = JSON.parse(oneThing)
-    //     console.log('IN CONVERSION');
-    //     setSongListFromMongo("teststate")
-
-    //     console.log('songListFromMongo ::***********',songListFromMongo);
-            
-    //     return 
-
-    // }
-
-    // conversion()
-
-        // const finalCartItems = songListFromMongo.map((cartElement) => {  
-        //     return (  
-                
-         
-            
-         
-        //     )
-        // })      
+ 
 
     if(!songListFromMongo){
         return(<div>Please Wait</div>)
     } else {
-
-    
-
-        return(  
-            
-         
+        return(           
             <>        
                 {
                     songListFromMongo.cart[0].songs.map((cartElement) => {  
-                        return (  
-                            
-                        <Card style={{ width: '30%', margin: 5}} key={uuidv4()}>
-                            <Card.Header>{ cartElement.songName }</Card.Header>
-                            <Card.Body>
-                                
-                                    <div>{ cartElement.songImages }</div>
-                                    <Form onSubmit={(e) => {removeFromCartHandler(e,cartElement,user)}} className="d-flex">
-                                        <Button variant="primary" type = "submit" >
-                                            Remove From Cart        
-                                        </Button>
-                                    </Form>
-                                
-                            </Card.Body>
-                        </Card> 
+                        return (                              
+                            <Card style={{ width: '30%', margin: 5}} key={uuidv4()}>
+                                <Card.Header>{ cartElement.songName }</Card.Header>
+                                <Card.Body>
+                                        <div>{ cartElement.songArtist }</div>
+                                        <img src={ cartElement.songImages} />
+                                 </Card.Body>
+                            </Card> 
                     
                         )
                     })   
@@ -145,3 +114,9 @@ export default MyCart
 
 
 
+// code for remove button in render
+{/* <Form onSubmit={(e) => {removeFromCartHandler(e,cartElement,user)}} className="d-flex">
+<Button variant="primary" type = "submit" >
+Remove From Cart        
+</Button>
+</Form> */}
