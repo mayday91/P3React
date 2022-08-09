@@ -23,11 +23,13 @@ const ShowSong = (props) => {
     const { user } = props
 
 
+
+
 return (
 
     <>
     <Container className="fluid">
-        <Card>
+        <Card style={lb}>
             <Card.Header>{ pet.fullTitle }</Card.Header>
             <Card.Body>
                 <Card.Text>

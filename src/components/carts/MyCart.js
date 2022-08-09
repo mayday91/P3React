@@ -78,16 +78,17 @@ console.log('!!!!songListFromMongo!!!!',songListFromMongo)
         return(  
             
             <>   
-            <div className="row">
-                <Stripe total={cartAmountTotal}/>
+            <div className="row " style={{ backgroundColor: "#0353a4" ,paddingLeft: "8%"}}>
+                <Stripe total={cartAmountTotal}  />
                 {
                     songListFromMongo.cart[0].songs.map((cartElement) => {  
                         return (                              
-                            <Card className="col-md-3" style={{ width: '30%', margin: 5}} key={uuidv4()}>
-                                <Card.Header>{ cartElement.songName }</Card.Header>
-                                <Card.Body>
+                            <Card className="col-md-3" style={{ width: '18rem', margin: 5, backgroundColor: "#d9dcd6"}} key={uuidv4()}>
+                                {/* <Card.Header>{ cartElement.songName }</Card.Header> */}
+                                <h2 style={{ textAlign: 'center'}} >{ cartElement.songName }</h2>
+                                <Card.Body  >
                                         <div>{ cartElement.songArtist }</div>
-                                        <img src={ cartElement.songImages} />
+                                        <img style= {{width: '15rem'}} src={ cartElement.songImages} />
                                         <div>$1.00</div>
                                  </Card.Body>
                             </Card> 

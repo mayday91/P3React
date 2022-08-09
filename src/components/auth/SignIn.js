@@ -65,12 +65,12 @@ const SignIn = (props) => {
 	}
 
     return (
-        <div className='row'>
+        <div className='row' style={{ backgroundColor: "#0353a4"}}>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Sign In</h3>
+                <h3 style={{ marginLeft: "16px"}} >Sign In</h3>
                 <Form onSubmit={onSignIn}>
                     <Form.Group controlId='email'>
-                        <Form.Label>Email address</Form.Label>
+                        {/* <Form.Label>Email address</Form.Label> */}
                         <Form.Control
                             required
                             type='email'
@@ -78,10 +78,11 @@ const SignIn = (props) => {
                             value={email}
                             placeholder='Enter email'
                             onChange={e => setEmail(e.target.value)}
+                            style={{ margin: "16px"}}
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
-                        <Form.Label>Password</Form.Label>
+                        {/* <Form.Label>Password</Form.Label> */}
                         <Form.Control
                             required
                             name='password'
@@ -89,9 +90,10 @@ const SignIn = (props) => {
                             type='password'
                             placeholder='Password'
                             onChange={e => setPassword(e.target.value)}
+                            style={{ margin: "16px"}}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button variant='success' type='submit' style={{ marginLeft: "16px"}}>
                         Submit
                     </Button>
                 </Form>

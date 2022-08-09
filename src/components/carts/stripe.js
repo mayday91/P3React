@@ -8,7 +8,7 @@ const Stripe = ({total}) => {
 
     return(
         <>
-            <div> 
+            <div style={{ marginTop : "6px"}}> 
                     <StripeCheckout
                         stripeKey = "pk_test_51LUZ1VBiP5RJVuISbJ5woJ2ONE6CzCuzmX2lhy72gawpunhS9CXEsUop9WvyJ92IEsxv52y2NKfmS9rcl1ogpEZ900A0HIoyMl"
                         // token = {total}
@@ -17,6 +17,8 @@ const Stripe = ({total}) => {
 
                         label = "Purchase"
                         shippingAddress
+                        
+                        
                     />
             </div>
         </>

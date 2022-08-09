@@ -1,5 +1,11 @@
 .blue {
       height: 100%;
-      color: lightblue !important ;
-      background-color: lightblue !important;
+      color: #0353a4 !important ;
+      background-color: #0353a4 !important;
     }
+
+.btn-primary{
+
+      color: #0353a4;
+      background-color: #0353a4;
+}

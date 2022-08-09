@@ -14,6 +14,9 @@ import { useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 
 
+const lb ={backgroundColor: " #005792", width: "14rem"}
+
+
 
 const SongSearch = (props) => {
     console.log('IN SongSearch @ SongSearch.js');
@@ -64,15 +67,16 @@ const SongSearch = (props) => {
 
     const songsToDisplay = returnedSongList.map(aSong => (
 
-        <Card className="col-md-3" style={{ width: '30%', margin: 5}} key={aSong.url}>
-            <Card.Header><strong>{ aSong.name }</strong></Card.Header>
-                <Card.Body>
+        <Card className="col-md-3" style={{ width: '18rem', margin: 5, backgroundColor: "#d9dcd6"}} key={aSong.url}>
+            {/* <Card.Header style={lb}><strong>{ aSong.name }</strong></Card.Header> */}
+                <h2 style={{ textAlign: 'center'}} >{ aSong.name }</h2>
+                <Card.Body style={{ backgroundColor: "#d9dcd6"}} >
                     <Card.Text>
                         <div>{ aSong.artist }</div> 
-                        <img src={ aSong.image[3]['#text'] } />
+                        <img style={{width: '15rem'}} src={ aSong.image[3]['#text'] } />
                         {/* <div>{ aSong.mbid }</div> */}
                         <Form onSubmit={(e) => {addToCartHandler(e,aSong,user)}} className="d-flex">
-                            <Button variant="primary" type = "submit" >
+                            <Button className="blue" variant="primary" type = "submit" style={{marginTop: '6px'}} >
                                 Add to Cart        
                             </Button>
                         </Form>
@@ -87,21 +91,24 @@ const SongSearch = (props) => {
    
         <Fragment >
             <div className="blue">            
-                <Form onSubmit={(e) => {doSongSearch(e)}} className="d-flex">
+                <Form onSubmit={(e) => {doSongSearch(e)}} className="d-flex" style={{ backgroundColor: "#0353a4"}}>
 
-                        <Form.Label className="blue">Song Search</Form.Label>                
+                        <Form.Label className="blue"></Form.Label>                
                         <Form.Control
                             onChange = {(e) => {handleInput(e)}}
                             type="search"
-                            placeholder="Search"
+                            placeholder="Search Song"
                             className="me-2"
                             aria-label="Search"
                             value = {searchTerm}
-                            
+                            style={{ width: '30%', 
+                                    marginLeft: "25%", 
+                                    marginRight: "auto"
+                                    , marginTop: "2%"}}                            
                         />
-                  <Button  className="blue" variant="outline-success" type="submit" >Search</Button>
+                  <Button  className="blue" variant="success" type="submit" style={{marginTop : "2%"}} >Search</Button>
                 </Form>
-                <div className="row">
+                <div className="row" style={{ backgroundColor: "#0353a4", paddingLeft: "4%"}} >
                 {songsToDisplay}
                 </div>
             </div>

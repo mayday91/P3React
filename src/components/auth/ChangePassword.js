@@ -53,12 +53,12 @@ const ChangePassword = (props) => {
 
 
     return (
-        <div className='row'>
+        <div className='row' style={{ backgroundColor: "#0353a4"}} >
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Change Password</h3>
-                <Form onSubmit={onChangePassword}>
-                    <Form.Group controlId='oldPassword'>
-                        <Form.Label>Old password</Form.Label>
+                <h3 style={{ marginLeft: "16px"}}>Change Password</h3>
+                <Form onSubmit={onChangePassword} >
+                    <Form.Group controlId='oldPassword' >
+                        {/* <Form.Label>Old password</Form.Label> */}
                         <Form.Control
                             required
                             name='oldPassword'
@@ -66,10 +66,11 @@ const ChangePassword = (props) => {
                             type='password'
                             placeholder='Old Password'
                             onChange={e => setOldPassword(e.target.value)}
+                            style={{ margin: "16px"}}
                         />
                     </Form.Group>
                     <Form.Group controlId='newPassword'>
-                        <Form.Label>New Password</Form.Label>
+                        {/* <Form.Label>New Password</Form.Label> */}
                         <Form.Control
                             required
                             name='newPassword'
@@ -77,9 +78,10 @@ const ChangePassword = (props) => {
                             type='password'
                             placeholder='New Password'
                             onChange={e => setNewPassword(e.target.value)}
+                            style={{ margin: "16px"}}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button variant="success" type='submit' style={{ marginLeft: "16px"}} >
                         Submit
                     </Button>
                 </Form>

@@ -4,8 +4,9 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 const linkStyle = {
-    color: 'white',
-    textDecoration: 'none'
+    color: 'black',
+    textDecoration: 'none',
+	// textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"
 }
 
 
@@ -52,10 +53,10 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md' className="red">
-		<Navbar.Brand>
+	<Navbar  variant='dark' expand='md'  style={{backgroundColor: "#7d8597", color: "pink"}}>
+		<Navbar.Brand >
             <Link to='/' style={linkStyle}>
-                dropouttunes
+                DropoutTunes
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
