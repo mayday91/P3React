@@ -1,3 +1,5 @@
+import './SongSearch.js'
+import Row from 'react-bootstrap/Row'
 import React, { useState, Fragment } from 'react'
 // import { Link } from 'react-router-dom'
 
@@ -10,6 +12,7 @@ import { songSearch } from '../../api/song.js'
 import { addSongToCart } from '../../api/cart.js'
 import { useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
+
 
 
 const SongSearch = (props) => {
@@ -60,13 +63,14 @@ const SongSearch = (props) => {
     // console.log('cleanSongList',cleanSongList)
 
     const songsToDisplay = returnedSongList.map(aSong => (
-        <Card style={{ width: '30%', margin: 5}} key={aSong.url}>
+
+        <Card className="col-md-3" style={{ width: '30%', margin: 5}} key={aSong.url}>
             <Card.Header><strong>{ aSong.name }</strong></Card.Header>
                 <Card.Body>
                     <Card.Text>
                         <div>{ aSong.artist }</div> 
                         <img src={ aSong.image[3]['#text'] } />
-                        <div>{ aSong.mbid }</div>
+                        {/* <div>{ aSong.mbid }</div> */}
                         <Form onSubmit={(e) => {addToCartHandler(e,aSong,user)}} className="d-flex">
                             <Button variant="primary" type = "submit" >
                                 Add to Cart        
@@ -75,13 +79,17 @@ const SongSearch = (props) => {
                     </Card.Text>
                 </Card.Body>
          </Card>
+
     ))
 
+
     return (
-        <Fragment>             
+   
+        <Fragment >
+            <div className="blue">            
                 <Form onSubmit={(e) => {doSongSearch(e)}} className="d-flex">
 
-                        <Form.Label>Song Search</Form.Label>                
+                        <Form.Label className="blue">Song Search</Form.Label>                
                         <Form.Control
                             onChange = {(e) => {handleInput(e)}}
                             type="search"
@@ -89,14 +97,21 @@ const SongSearch = (props) => {
                             className="me-2"
                             aria-label="Search"
                             value = {searchTerm}
+                            
                         />
-                  <Button variant="outline-success" type="submit" >Search</Button>
+                  <Button  className="blue" variant="outline-success" type="submit" >Search</Button>
                 </Form>
+                <div className="row">
                 {songsToDisplay}
+                </div>
+            </div>
         </Fragment>
+
     )
 }
 
 
 
 export default SongSearch
+
+{/* <Row xs={1} md={2} className="g-3"> */}

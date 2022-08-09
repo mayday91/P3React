@@ -1,3 +1,4 @@
+import './Header.css';
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -6,20 +7,22 @@ const linkStyle = {
     color: 'white',
     textDecoration: 'none'
 }
+
+
 const authenticatedOptions = (
 	<>
-		<Nav.Item>
+		<Nav.Item className='m-2' >
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
 		</Nav.Item>
 
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 		    <Link to='my-cart' style={linkStyle}>My Cart</Link>
         </Nav.Item>
 	</>
@@ -27,10 +30,10 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item>
+        <Nav.Item className='m-2'>
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
-        <Nav.Item>
+        <Nav.Item className='m-2'>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
 		
@@ -40,16 +43,16 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
+		<Nav.Item className='m-2'>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Link>
+		</Nav.Item>
 	</>
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar bg='primary' variant='dark' expand='md' className="red">
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
                 dropouttunes

@@ -1,4 +1,5 @@
 // import React, { Component, Fragment } from 'react'
+import './App.css'
 import React, { useState, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
@@ -45,7 +46,7 @@ const App = () => {
 	}
 
 		return (
-			<Fragment>
+			<Fragment className="red">
 				<Header user={user} />
 				<Routes>
 					<Route path='/songs' element={<SongSearch />} />

@@ -78,11 +78,12 @@ console.log('!!!!songListFromMongo!!!!',songListFromMongo)
         return(  
             
             <>   
+            <div className="row">
                 <Stripe total={cartAmountTotal}/>
                 {
                     songListFromMongo.cart[0].songs.map((cartElement) => {  
                         return (                              
-                            <Card style={{ width: '30%', margin: 5}} key={uuidv4()}>
+                            <Card className="col-md-3" style={{ width: '30%', margin: 5}} key={uuidv4()}>
                                 <Card.Header>{ cartElement.songName }</Card.Header>
                                 <Card.Body>
                                         <div>{ cartElement.songArtist }</div>
@@ -97,7 +98,7 @@ console.log('!!!!songListFromMongo!!!!',songListFromMongo)
                 }   
 
                     
-
+                </div>
             </>
 
         )
