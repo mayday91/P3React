@@ -45,6 +45,9 @@ Login and save songs to your cart then checkout.
 ![Cart](./public/assets/images/Cart.png)
 ![Logout](./public/assets/images/logout.png)
 
+## ERD
+![ERD](./public/assets/images/ERD/ERD.png)
+
 
 ## Roles
 Randy D'Abbraccio & Gonzalo Quiroqa - frontend client
